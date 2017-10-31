@@ -16,7 +16,7 @@ DESIGN CHOICES
 
 I decided to store an external IP-port mapping to an internal IP-port in the
 struct nat_table_entry. Instead of using a map library, I found that structs
-lent itself to code clarity and easy usage.
+lent themselves to code clarity and easy usage.
 
 These structs are stored in a series of linkedlists, given their fast insert
 times. I choose to maintain separate lists of
