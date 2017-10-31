@@ -193,7 +193,7 @@ void nat_free(nat_config_t *nat_config) {
 }
 
 int main (int argc, char *argv[]) {
-  if ( argc != 3 ) /* argc should be 2 for correct execution */
+  if ( argc != 3 ) /* argc should be 3 for correct execution */
     {
         /* We print argv[0] assuming it is the program name */
         printf("usage: %s NAT_filename FLOW_filename\n", argv[0]);
@@ -204,7 +204,7 @@ int main (int argc, char *argv[]) {
     memset(&config, 0, sizeof(nat_config_t));
     nat_init(&config);
 
-    // We assume argv[1] is a filename to open
+    // We assume argv[1] is nat_config file
     FILE *config_fd = fopen( argv[1], "r" );
     if ( config_fd == 0 ) {
       printf("Could not open file %s\n", argv[1]);
@@ -212,7 +212,7 @@ int main (int argc, char *argv[]) {
     }
     populate_nat_table(config_fd, &config);
 
-    // Now, run comparisons with inputs in FLOW file.
+    // Now, run comparisons with inputs in FLOW file, argv[2]
     FILE *flow_fd = fopen( argv[2], "r" );
     if ( flow_fd == 0 ) {
       printf("Could not open file %s\n", argv[1]);
